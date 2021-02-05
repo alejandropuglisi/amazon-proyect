@@ -1,0 +1,9 @@
+.item__row {
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1;
+    margin-right: 5px;
+    margin-left: 5px;
+    justify-content: center;
+    padding: 0;
+}
