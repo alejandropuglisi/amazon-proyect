@@ -31,7 +31,7 @@
 }
 
 .header__search__input {
-    height: 30px !important;
+    height: 40px !important;
     padding: 10px;
     border: none;
     width: 100%;
@@ -40,10 +40,12 @@
 
 .header__search__icon {
     padding: 5px;
-    height: 30px !important;
+    height: 40px !important;
+    width: 40px !important;
     background-color: #cd904d;
-    border-radius: 0em 0.4em 0.4em 0em;
+    border-radius: 0em 0.2em 0.2em 0em;
     margin-right: 30px;
+    color: #000;
 }
 
 .header__nav {
@@ -62,6 +64,7 @@
     font-weight: 400;
     margin-left: 0px;
     margin-right: 10px;
+    line-height: 12px;
 }
 
 .header__option__login {

@@ -1,0 +1,63 @@
+.footer {
+    background-color: #232F3E;
+    width: 100%;
+    min-height: 200px;
+    color: whitesmoke;
+}
+
+.footer__top {
+    background-color: #354558;
+    min-height: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.footer__title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.footer__links {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+.footer__links__meetUs, .footer__links__earnMoney, .footer__links__payProducts, .footer__links__canHelpU {
+    height: 22em;
+    padding: 0;
+}
+
+.footer__links__meetUs {
+    width: 5%;
+}
+
+.footer__links__earnMoney {
+    width: 14%;
+}
+
+.footer__links__payProducts {
+    width: 16.5%;
+}
+
+.footer__links__canHelpU {
+    width: 11%;
+}
+
+.footer__links__a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 300;
+    margin: 0;
+    margin-top: 10px;
+    line-height: 14px;
+}
