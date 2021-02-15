@@ -1,17 +1,26 @@
 import './ItemDetail.css';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import ItemCountComponent from '../itemCount/ItemCount';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ItemDetailComponent = ({item}) => {
+
+    const [goToCart, setGoToCart] = useState (false);
+
+    const onAdd = (count) => {
+        console.log('Se agregaron ', count, ' productos al carrito');
+        setGoToCart(true);
+    }
 
     return (
         <>
             <div className="item__grid__container">
                 <div className="item__images">
-                    <img className="little-images" src={item.image2} alt=""/>
-                    <img className="little-images" src={item.image3} alt=""/>
-                    <img className="little-images" src={item.image4} alt=""/>
-                    <img className="little-images" src={item.image5} alt=""/>
+                    <img className="little-images" src={item.image} alt=""/>
+                    <img className="little-images" src={item.image} alt=""/>
+                    <img className="little-images" src={item.image} alt=""/>
+                    <img className="little-images" src={item.image} alt=""/>
                 </div>
                 <div>
                     <div className="item__img2">
@@ -22,7 +31,7 @@ const ItemDetailComponent = ({item}) => {
                 <div>
                     <div className="item__description">
                         <p className="item__description">{item.description}</p>
-                        <p className="item__a">Visita la tienda de Acer</p>
+                        <p className="item__a">Visita la tienda de "brand"</p>
                         <hr />
                     </div>
                     <div className="item__price1">
@@ -33,15 +42,15 @@ const ItemDetailComponent = ({item}) => {
                         <p>Disponible a un precio menor de <span className="item__a">otros vendedores</span> que podrían no ofrecer envío Prime gratis.</p>
                     </div>
                     <div className="item__p2">
-                        <p>CPU: <strong>{item.CPU}</strong></p>
-                        <p>Marca: <strong>{item.brand}</strong></p>
-                        <p>Sistema Operativo: <strong>{item.system}</strong></p>
-                        <p>Pantalla: <strong>{item.display}</strong></p>
+                        <p>CPU: <strong>CPU</strong></p>
+                        <p>Marca: <strong>brand</strong></p>
+                        <p>Sistema Operativo: <strong>system</strong></p>
+                        <p>Pantalla: <strong>display</strong></p>
                         <hr />
                     </div>
                     <div className="item__p3">
                         <p className="item__about">Sobre este artículo: </p> 
-                        <p>{item.about}</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui doloremque dignissimos similique reprehenderit, soluta iste autem voluptas ab adipisci fuga architecto quod vel! Officiis explicabo aliquid sed voluptates tempore a!</p>
                     </div>
                 </div>
                 <div className="border-column3">
@@ -64,8 +73,7 @@ const ItemDetailComponent = ({item}) => {
                         </select>
                     </div>
                     <div className="buttons">
-                        <button className="item__button1"><ShoppingCartIcon className="icon" style={{fontSize: 25}} />Agregar al Carrito</button>
-                        <button className="item__button2"><PlayArrowIcon className="icon2" style={{fontSize: 25}} />Comprar ahora</button>
+                        {goToCart ? <Link to={'/cart'}><button className="item__button2"><PlayArrowIcon className="icon2" style={{fontSize: 25}} />Finalizar compra</button></Link> : <ItemCountComponent stock={item.stock} onAdd={onAdd} className="item__button1" />}
                     </div>
                 </div>
             </div>

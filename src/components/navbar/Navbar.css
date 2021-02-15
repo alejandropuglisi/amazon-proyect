@@ -19,15 +19,44 @@
     margin-left: 0px;
 }
 
-.all {
-    font-size: 14px;
+#all {
+    font-size: 14px ;
     color: #fff;
     font-weight: 500;
+    padding: 0;
+    text-transform: none;
+    margin: 0;
+    background-color: #232f3e !important;
+    box-shadow: unset;
 }
 
 .nav__icon {
     padding-left: 0px;
     margin-right: 3px;
+}
+
+.dropdownProducts {
+    position: absolute;
+    transform: unset !important;
+    top: -71px !important;
+    left: -20px !important;
+    width: 20em !important;
+    transition: all 0.5s ease;
+}
+
+.navbar__login {
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #232f3e;
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+.navbar__login:hover {
+    background-color: #232f3e;
+    color: #fff;
 }
 
 .navbar__options {
@@ -43,6 +72,6 @@
     border-radius: 3px;
 }
 
-.all:hover {
+#all:hover {
     color: #fff;
 }

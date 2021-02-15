@@ -1,7 +1,7 @@
 import './ItemList.css';
 import ItemComponent from '../item/Item';
 
-const ItemListComponent = ({items}) => {
+const ItemListComponent = ({items, categories}) => {
 
     return (
         <>

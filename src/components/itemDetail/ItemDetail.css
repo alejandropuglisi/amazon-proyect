@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 2% 30% 35% 18%;
     grid-template-rows: 370px 60px 60px 170px 230px;
-    margin-top: 3em;
+    margin-top: 2.5em;
     grid-template-areas: "imgs img description price2"
                          "imgs img price1 shipping"
                          "imgs img p1 shipping"
@@ -31,7 +31,7 @@
     object-fit: contain;
     margin-bottom: 60px;
     grid-area: img;
-    margin-top: 2em;
+    max-height: 300px;
 }
 
 .center {
@@ -140,6 +140,8 @@
 
 .buttons {
     grid-area: button;
+    display: flex;
+    flex-direction: column;
 }
 
 .item__button1, .item__button2 {

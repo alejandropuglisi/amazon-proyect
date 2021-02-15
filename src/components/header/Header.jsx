@@ -2,13 +2,14 @@ import SearchIcon from '@material-ui/icons/Search';
 import './Header.css';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
+import { Link } from 'react-router-dom';
 
 const HeaderComponent = () => {
 
     return (
         <>
             <nav className="header">
-                <img className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo"/>
+                <Link to={`/`}><img className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo"/></Link>
                 <LocationOnOutlinedIcon className="header__option__shipping" />
                     <div className="header__options">
                         <span className="header__option__greeting">Enviar a</span>
