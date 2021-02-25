@@ -1,0 +1,123 @@
+.cart-container {
+    padding: 20px;
+    background-color: rgb(240, 230, 230);
+    min-height: fit-content;
+    display: flex;
+    padding-bottom: 0;
+}
+
+.cart__left {
+    height: 10em;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.cart__title, .cart__title2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-right: 10px;
+    padding: 10px;
+    padding-top: 30px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.clear-cart, .goToProducts, .goToCheckout {
+    font-size: 13px;
+    background: linear-gradient(180deg, #fbde74 0%, #e99b25f8 100%);
+    border: 1px solid;
+    height: 31px;
+    border-radius: 2px;
+    color: #111;
+    border-color: #a88734 #9c7e31 #846a29;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart__subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+.cart__ad {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.item-container {
+    width: 80%;
+    height: 100%;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+.cart-item-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart__title2 {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 0px;
+}
+
+.cart__price {
+    border-bottom: 1px solid lightgray;
+    text-align: right;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.cart__right {
+    display: flex;
+    justify-content: space-between;
+}
+
+.goToProducts {
+    width: 20%;
+    margin-left: 30px;
+}
+
+.subtotal, .cart__checkout__items {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+.cart__checkout {
+    width: 24%;
+    height: 10em;
+    background-color: #fff;
+    margin-left: 20px;
+    padding-top: 1.2em;
+    padding-left: 1.2em;
+}
+
+.cart__checkout__items {
+    text-align: left;
+    line-height: 1.4em;
+    margin-bottom: 0;
+}
+
+form {
+    margin-bottom: 0.8em;
+}
+
+.checkbox {
+    font-size: 14px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.goToCheckout {
+    width: 90%;
+}

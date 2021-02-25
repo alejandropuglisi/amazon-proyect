@@ -3,8 +3,19 @@ import './Header.css';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
+import { useContext } from 'react';
 
 const HeaderComponent = () => {
+
+    /*const [data, setData] = useState('');
+
+    const handleOnSubmit = (evt) => {
+        evt.preventDefault();
+        console.log(setData(evt.target.value));
+    }*/
+
+    const {cart} = useContext(CartContext);
 
     return (
         <>
@@ -29,10 +40,13 @@ const HeaderComponent = () => {
                         <span className="header__option__login">y Pedidos</span>
                     </div>
                 </div>
+                {(cart.length) <= 0 ? <div className="header__option__login">Carrito vacío</div>
+                :
                 <div className="header__option__cart">
-                    <AddShoppingCartIcon style={{fontSize: 35}} /> 
-                    <span className="header__option__login header__option__cart-count">2</span>
-                </div>
+                    <Link to={`/cart`}><AddShoppingCartIcon id="cart-widget" style={{fontSize: 35}} /></Link>
+                    <span className="header__option__login header__option__cart-count">{cart.totalItems}</span>
+                    <span className="header__option__login header__option__cart-total">U$S&nbsp;<span>{cart.totalPrice}</span></span>
+                </div>}
             </nav>
         </>
     )

@@ -1,17 +1,23 @@
 import './App.css';
 import  { BrowserRouter, Switch, Route } from 'react-router-dom';
-import HeaderComponent from './components/header/Header';
-import ItemListContainerComponent from './components/itemListContainer/ItemListContainer';
-import ItemDetailContainerComponent from './components/itemDetailContainer/ItemDetailContainer';
-import FooterComponent from './components/footer/Footer';
-import NavbarComponent from './components/navbar/Navbar';
-import LoginComponent from './components/login/Login';
-import CartComponent from './components/cart/Cart';
+import HeaderComponent from './components/Header/Header';
+import ItemListContainerComponent from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainerComponent from './components/ItemDetailContainer/ItemDetailContainer';
+import FooterComponent from './components/Footer/Footer';
+import NavbarComponent from './components/Navbar/Navbar';
+import LoginComponent from './components/Login/Login';
+import CartComponent from './components/Cart/Cart';
+import CarouselPage from './components/Carousel/Carousel';
+import {CartProvider} from './context/CartContext';
+import SearchComponent from './components/Search/Search';
 
 const App = () => {
 
   return (
     <>
+
+      <CartProvider>
+
         <BrowserRouter>
 
           <Switch>
@@ -19,26 +25,55 @@ const App = () => {
             <Route path="/login" component={LoginComponent}/>
 
           </Switch>
-            
-            <HeaderComponent />
 
-            <NavbarComponent />
+        </BrowserRouter>
+          
+        <BrowserRouter>
+
+          <HeaderComponent />
+          <NavbarComponent />
 
           <Switch>
-                     
-            <Route exact path="/" component={ItemListContainerComponent}/>
-           
-            <Route path="/categories/:categoryId" component={ItemListContainerComponent}/>
-    
-            <Route path="/item/:id" component={ItemDetailContainerComponent}/>
 
-            <Route path="/cart" component={CartComponent}/>
+            <Route exact path="/">
+
+              <CarouselPage />
+              <ItemListContainerComponent />
+              
+            </Route>
+           
+            <Route path="/categories/:categoryId">
+              
+              <ItemListContainerComponent />
+            
+            </Route>
+    
+            <Route path="/item/:id">
+              
+              <ItemDetailContainerComponent />             
+
+            </Route>
+
+            <Route path="/cart">
+        
+              <CartComponent />
+
+            </Route>
+
+            <Route path="/search/:keyword">
+              
+              <SearchComponent />
+            
+            </Route>
 
           </Switch>
 
           <FooterComponent />
 
         </BrowserRouter>
+          
+      </CartProvider>
+
     </>
   );
 }

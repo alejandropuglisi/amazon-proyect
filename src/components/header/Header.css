@@ -14,8 +14,8 @@
     width: 100px;
     object-fit: contain;
     margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .header__option__shipping {
@@ -27,7 +27,7 @@
 
 .header__search {
     display: flex;
-    width: 51em;
+    width: 47em;
 }
 
 .header__search__input {
@@ -77,8 +77,20 @@
     align-items: center;
 }
 
-.header__option__cart-count {
+.header__option__cart-count, .header__option__cart-total {
     font-size: 15px;
     color: rgb(243, 136, 13);
-    margin-right: 20px;
+    margin-right: 15px;
+}
+
+#cart-widget {
+    color: #fff;
+}
+
+.header__option__cart-total {
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

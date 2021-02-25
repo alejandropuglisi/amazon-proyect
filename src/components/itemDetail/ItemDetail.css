@@ -116,22 +116,6 @@
     font-weight: 400;
 }
 
-.item__stock {
-    grid-area: stock;
-}
-
-.stock {
-    background-color: rgb(223, 219, 219);
-    border-radius: 5px;
-    font-size: 11px;
-    padding: 1px;
-    margin-bottom: 2em;
-}
-
-.stock__option {
-    font-size: 14px;
-}
-
 .item__a {
     font-size: 14px;
     color: #007185;

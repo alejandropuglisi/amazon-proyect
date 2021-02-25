@@ -1,8 +1,7 @@
 import './ItemListContainer.css';
-import CarouselPage from '../carousel/Carousel';
 import { useEffect, useState } from 'react';
-import Database from '../falseDatabase/database';
-import ItemListComponent from '../itemList/ItemList';
+import Database from '../FalseDatabase/database';
+import ItemListComponent from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
 
 const ItemListContainerComponent = () => {
@@ -29,9 +28,6 @@ const ItemListContainerComponent = () => {
 
     return (
         <>
-            <div id="home">
-                <CarouselPage />
-            </div>
             {items == "" && 
             <h1>No se encontraron productos</h1>
             }

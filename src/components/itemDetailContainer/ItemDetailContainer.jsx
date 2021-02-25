@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import Database from '../falseDatabase/database';
-import ItemDetailComponent from '../itemDetail/ItemDetail';
+import Database from '../FalseDatabase/database';
+import ItemDetailComponent from '../ItemDetail/ItemDetail';
 import {useParams} from 'react-router-dom';
 
 const ItemDetailContainerComponent = () => {

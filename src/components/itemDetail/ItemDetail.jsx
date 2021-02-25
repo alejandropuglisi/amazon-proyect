@@ -1,16 +1,39 @@
 import './ItemDetail.css';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import ItemCountComponent from '../itemCount/ItemCount';
-import { useState } from 'react';
+import ItemCountComponent from '../ItemCount/ItemCount';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const ItemDetailComponent = ({item}) => {
 
+    const {addItem} = useContext(CartContext);
+
+    const [count, setCount] = useState (1);
+
     const [goToCart, setGoToCart] = useState (false);
 
-    const onAdd = (count) => {
-        console.log('Se agregaron ', count, ' productos al carrito');
+    const add = () => {
+        if (count < item.stock) {
+            setCount(count + 1);
+        } else {
+            console.log('Out of stock');
+        }
+    }
+
+    const substract = () => {
+        if (count > 1) {
+            setCount(count - 1);
+        } else {
+            console.log('No se puede agregar menos de 1 producto')
+        }
+    }
+
+    const onAddToCart = () => {
         setGoToCart(true);
+        addItem(item, count);
+        setCount(1);
     }
 
     return (
@@ -62,18 +85,15 @@ const ItemDetailComponent = ({item}) => {
                         <p className="item__p2">Llega: <strong>feb 10-17</strong></p>
                         <p className="item__available">Disponible</p>
                     </div>
-                    <div className="item__stock">
-                        <select className="stock" name="stock" id="">
-                            <option value="">Cantidad: 1</option>
-                            <option className="stock__option" value="">1</option>
-                            <option className="stock__option" value="">2</option>
-                            <option className="stock__option" value="">3</option>
-                            <option className="stock__option" value="">4</option>
-                            <option className="stock__option" value="">5</option>
-                        </select>
-                    </div>
                     <div className="buttons">
-                        {goToCart ? <Link to={'/cart'}><button className="item__button2"><PlayArrowIcon className="icon2" style={{fontSize: 25}} />Finalizar compra</button></Link> : <ItemCountComponent stock={item.stock} onAdd={onAdd} className="item__button1" />}
+                        {goToCart ?
+                            <Link to={'/cart'}><button className="item__button2"><PlayArrowIcon className="icon2" style={{fontSize: 25}} />Finalizar compra</button></Link>
+                        :   
+                        <>
+                            <ItemCountComponent stock={item.stock} add={add} substract={substract} count={count} className="item__button1" /> 
+                            <button onClick={onAddToCart} className="item__button1"><ShoppingCartIcon className="icon" style={{fontSize: 25}} />Agregar al Carrito</button>
+                        </>
+                        }
                     </div>
                 </div>
             </div>

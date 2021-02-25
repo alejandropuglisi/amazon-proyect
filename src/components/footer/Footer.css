@@ -1,7 +1,7 @@
 .footer {
     background-color: #232F3E;
     width: 100%;
-    min-height: 200px;
+    height: 25em;
     color: whitesmoke;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .footer__links__meetUs, .footer__links__earnMoney, .footer__links__payProducts, .footer__links__canHelpU {
-    height: 22em;
+    height: 18em;
     padding: 0;
 }
 

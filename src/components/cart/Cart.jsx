@@ -1,9 +1,19 @@
+import './Cart.css';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
+import EmptyCartComponent from '../EmptyCart/EmptyCart';
+import FullCartComponent from '../FullCart/FullCart';
 
 const CartComponent = () => {
 
+    const {cart} = useContext(CartContext);
+
     return (
         <>
-            <div>Hola, soy el carrito</div>
+            <div className="cart-container">
+                {cart.length <= 0 ? <EmptyCartComponent />
+                : <FullCartComponent />}
+            </div>
         </>
     )
 }
