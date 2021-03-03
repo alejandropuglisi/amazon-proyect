@@ -2,33 +2,19 @@ import SearchIcon from '@material-ui/icons/Search';
 import './Header.css';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
-import { useContext, useRef, useParams, useState, useEffect } from 'react';
-import Database from '../FalseDatabase/database';
+import { useContext, useState } from 'react';
 
 const HeaderComponent = () => {
 
-    /*const [itemsSearched, setItemsSearched] = useState([]);
-    const itemSearch = useRef (null);
-    const {keyword} = useParams();
+    const history = useHistory();
+    const [itemsSearched, setItemsSearched] = useState('');
+    const handleInputSearch = (e) => {
+        setItemsSearched(e.target.value);
+    }
 
-    useEffect(() => {
-        const itemsPromise = new Promise ((resolve, reject) => {
-            resolve(Database);
-        });
-        
-        itemsPromise.then((result) => {
-            if(keyword) {
-                let productSearched = result.filter(product => product.title == keyword);
-                setItemsSearched(productSearched);
-            }
-        })
-    }, [keyword]);
-
-    const search = () => {
-        console.log(itemSearch.current.value)
-    }*/
+    const handleBtnSearch = () => history.push(`/search/${itemsSearched}`);
 
     const {cart} = useContext(CartContext);
 
@@ -42,8 +28,8 @@ const HeaderComponent = () => {
                         <span className="header__option__login">Argentina</span>
                     </div>
                 <div className="header__search">
-                    <input /*value={itemsSearched} onChange={search} ref={itemSearch}*/ type="text" className="header__search__input"/>
-                    <SearchIcon className="header__search__icon"/>
+                    <input value={itemsSearched} onChange={handleInputSearch} type="text" className="header__search__input"/>
+                    <SearchIcon className="header__search__icon" onClick={handleBtnSearch}/>
                 </div>
                 <div className="header__nav">
                     <div className="header__options">

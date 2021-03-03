@@ -1,22 +1,18 @@
-/*import {useEffect, useState} from 'react';
-import Database from '../FalseDatabase/database';
+import {useEffect, useState} from 'react';
 import ItemDetailComponent from '../ItemDetail/ItemDetail';
 import {useParams} from 'react-router-dom';
+import { useFirebaseContext } from '../../context/FirebaseContext';
 
 const ItemDetailContainerComponent = () => {
 
     const [item, setItem] = useState([])
-
-    const {id} = useParams()
+    const {id} = useParams();
+    const { getItemByID } = useFirebaseContext();
 
     useEffect(() => {
-        const getItem = new Promise ((resolve, reject) => {
-            resolve(Database)
-        });
-        
-        getItem.then((result) => {
-            setItem(result.find((product) => product.id === Number(id)))
-        })
+        getItemByID(id).then((querySnapshot) => {
+            setItem({id: querySnapshot.id, ...querySnapshot.data()});
+        }).catch(error => console.log(error))
     }, [id]);
 
     return (
@@ -26,4 +22,4 @@ const ItemDetailContainerComponent = () => {
     )
 }
 
-export default ItemDetailContainerComponent;*/
+export default ItemDetailContainerComponent;

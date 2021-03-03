@@ -2,7 +2,7 @@ import './Item.css';
 import { Link } from 'react-router-dom';
 
 const ItemComponent = ({item}) => {
-
+    console.log(item);
     return (
         <>
             <Link to={`/item/${item.id}`} className="item">

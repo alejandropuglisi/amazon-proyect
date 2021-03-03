@@ -9,9 +9,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 const ItemDetailComponent = ({item}) => {
 
     const {addItem} = useContext(CartContext);
-
-    const [count, setCount] = useState (1);
-
+    const [count, setCount] = useState(1);
     const [goToCart, setGoToCart] = useState (false);
 
     const add = () => {

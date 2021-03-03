@@ -9,12 +9,12 @@ const app = firebase.initializeApp ({
     storageBucket: "fir-dabd8.appspot.com",
     messagingSenderId: "1096292895599",
     appId: "1:1096292895599:web:46607ee8b1334b4afff69a"
-  });
+});
 
-  export const getFirebase = () => {
-      return app;
-  }
+export const getFirebase = () => {
+    return app;
+}
 
-  export const getFirestore = () => {
-      return firebase.firestore(app);
-  }
+export const getFirestore = () => {
+    return firebase.firestore(app);
+}

@@ -1,11 +1,7 @@
 import './ItemList.css';
 import ItemComponent from '../Item/Item';
-import { useContext } from 'react';
-import { ProductsContext } from '../../context/ProductsContext';
 
-const ItemListComponent = () => {
-
-    const {products} = useContext(ProductsContext);
+const ItemListComponent = ({products}) => {
 
     return (
         <>
