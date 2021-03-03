@@ -8,6 +8,10 @@ const CartComponent = () => {
 
     const {cart} = useContext(CartContext);
 
+    /*const checkout = () => {
+        let order = 
+    }*/
+
     return (
         <>
             <div className="cart-container">

@@ -1,11 +1,13 @@
 import "../Cart/Cart.css";
 import CartItemsComponent from "../CartItems/CartItems";
-import { useContext } from "react";
+import { useContext, useNavigate } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const FullCartComponent = () => {
 
   const { cart, clearCart } = useContext(CartContext);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -22,7 +24,7 @@ const FullCartComponent = () => {
             return <CartItemsComponent key={cartItem.id} cartItem={cartItem} />;
           })}
           <div className="cart__right">
-            <button className="goToProducts">
+            <button onClick={() => navigate(-1)} className="goToProducts">
                 Volver a productos
             </button>
             <h2 className="subtotal">

@@ -4,15 +4,30 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
-import { useContext } from 'react';
+import { useContext, useRef, useParams, useState, useEffect } from 'react';
+import Database from '../FalseDatabase/database';
 
 const HeaderComponent = () => {
 
-    /*const [data, setData] = useState('');
+    /*const [itemsSearched, setItemsSearched] = useState([]);
+    const itemSearch = useRef (null);
+    const {keyword} = useParams();
 
-    const handleOnSubmit = (evt) => {
-        evt.preventDefault();
-        console.log(setData(evt.target.value));
+    useEffect(() => {
+        const itemsPromise = new Promise ((resolve, reject) => {
+            resolve(Database);
+        });
+        
+        itemsPromise.then((result) => {
+            if(keyword) {
+                let productSearched = result.filter(product => product.title == keyword);
+                setItemsSearched(productSearched);
+            }
+        })
+    }, [keyword]);
+
+    const search = () => {
+        console.log(itemSearch.current.value)
     }*/
 
     const {cart} = useContext(CartContext);
@@ -27,7 +42,7 @@ const HeaderComponent = () => {
                         <span className="header__option__login">Argentina</span>
                     </div>
                 <div className="header__search">
-                    <input type="text" className="header__search__input"/>
+                    <input /*value={itemsSearched} onChange={search} ref={itemSearch}*/ type="text" className="header__search__input"/>
                     <SearchIcon className="header__search__icon"/>
                 </div>
                 <div className="header__nav">

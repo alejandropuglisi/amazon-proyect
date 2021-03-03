@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+/*import {useEffect, useState} from 'react';
 import Database from '../FalseDatabase/database';
 import ItemDetailComponent from '../ItemDetail/ItemDetail';
 import {useParams} from 'react-router-dom';
@@ -26,4 +26,4 @@ const ItemDetailContainerComponent = () => {
     )
 }
 
-export default ItemDetailContainerComponent;
+export default ItemDetailContainerComponent;*/

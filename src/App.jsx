@@ -8,71 +8,74 @@ import NavbarComponent from './components/Navbar/Navbar';
 import LoginComponent from './components/Login/Login';
 import CartComponent from './components/Cart/Cart';
 import CarouselPage from './components/Carousel/Carousel';
-import {CartProvider} from './context/CartContext';
-import SearchComponent from './components/Search/Search';
+import { CartProvider } from './context/CartContext';
+import { ProductsProvider } from './context/ProductsContext';
 
 const App = () => {
 
   return (
     <>
+      <ProductsProvider>
 
-      <CartProvider>
+        <CartProvider>
 
-        <BrowserRouter>
+          <BrowserRouter>
 
-          <Switch>
+            <Switch>
+              
+              <Route path="/login" component={LoginComponent}/>
+
+            </Switch>
+
+          </BrowserRouter>
             
-            <Route path="/login" component={LoginComponent}/>
+          <BrowserRouter>
 
-          </Switch>
+            <HeaderComponent />
+            <NavbarComponent />
 
-        </BrowserRouter>
+            <Switch>
+
+              <Route exact path="/">
+
+                <CarouselPage />
+                <ItemListContainerComponent />
+                
+              </Route>
+            
+              <Route path="/categories/:categoryId">
+                
+                <ItemListContainerComponent />
+              
+              </Route>
+      
+              <Route path="/item/:id">
+                
+                <ItemDetailContainerComponent />             
+
+              </Route>
+
+              <Route path="/cart">
           
-        <BrowserRouter>
+                <CartComponent />
 
-          <HeaderComponent />
-          <NavbarComponent />
+              </Route>
 
-          <Switch>
-
-            <Route exact path="/">
-
-              <CarouselPage />
-              <ItemListContainerComponent />
+              <Route path="/search/:keyword">
+                
+                <HeaderComponent />
               
-            </Route>
-           
-            <Route path="/categories/:categoryId">
-              
-              <ItemListContainerComponent />
+              </Route>
+
+            </Switch>
+
+            <FooterComponent />
+
+          </BrowserRouter>
             
-            </Route>
-    
-            <Route path="/item/:id">
-              
-              <ItemDetailContainerComponent />             
+        </CartProvider>
 
-            </Route>
-
-            <Route path="/cart">
-        
-              <CartComponent />
-
-            </Route>
-
-            <Route path="/search/:keyword">
-              
-              <SearchComponent />
-            
-            </Route>
-
-          </Switch>
-
-          <FooterComponent />
-
-        </BrowserRouter>
-          
-      </CartProvider>
+      </ProductsProvider>
 
     </>
   );

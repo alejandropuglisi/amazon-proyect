@@ -1,38 +1,22 @@
 import './ItemListContainer.css';
-import { useEffect, useState } from 'react';
-import Database from '../FalseDatabase/database';
 import ItemListComponent from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
+import { ProductsContext } from '../../context/ProductsContext';
+import { useContext } from 'react';
 
 const ItemListContainerComponent = () => {
 
+    const {products} = useContext(ProductsContext);
+
     const {categoryId} = useParams();
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        const itemsPromise = new Promise ((resolve, reject) => {
-            resolve(Database);
-        });
-        
-        itemsPromise.then((result) => {
-            if(categoryId) {
-                let productsCategory = result.filter(product => product.category == categoryId);
-                setItems(productsCategory);
-
-            } else {
-                setItems(result);
-            }
-
-        })
-    }, [categoryId]);
-
+    
     return (
         <>
-            {items == "" && 
+            {products == "" && 
             <h1>No se encontraron productos</h1>
             }
-            {items && 
-            <ItemListComponent items={items} />
+            {products && 
+            <ItemListComponent />
             }
         </>
     )
