@@ -1,42 +1,15 @@
 import "../Cart/Cart.css";
 import CartItemsComponent from "../CartItems/CartItems";
 import { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import { useFirebaseContext } from "../../context/FirebaseContext";
 
 const FullCartComponent = () => {
 
   const { cart, clearCart } = useContext(CartContext);
-  const { updateStock, createOrder } = useFirebaseContext();
-  const history = useHistory();
-
-  //const navigate = useNavigate();
-  //navigate(-1)
-
-  const handleCheckout = () => {
-    //1-Crear la orden
-    //2-Llamar a funcion de firebaseContext updateStock(cart)
-    //3-Crear la orden
-    //4-Llamar a la funcion de firebase context createOrder(newOrder;
-    //Grabar la orden de compra
-    let newOder = { buyer: [{
-        name: 'Alejandro',
-        phone: '+54 9 123456',
-        email: 'alejandro@gmail.com'
-      }],
-      items: [...cart],
-      total: cart.totalPrice
-    }
-    updateStock(cart)
-    .then((result) =>{
-      return createOrder(newOder);
-    })
-    .then((result) => {
-      console.log(`Se creo la orden compra #${result.id}`);
-      clearCart();
-      history.push('/');
-    });
+  
+  const historyGoBack = () => {
+    window.history.go(-2);
   }
 
   return (
@@ -54,7 +27,7 @@ const FullCartComponent = () => {
             return <CartItemsComponent key={cartItem.id} cartItem={cartItem} />;
           })}
           <div className="cart__right">
-            <button onClick={() => console.log('volver a la vista previa')} className="goToProducts">
+            <button onClick={historyGoBack} className="goToProducts">
                 Volver a productos
             </button>
             <h2 className="subtotal">
@@ -87,7 +60,7 @@ const FullCartComponent = () => {
             Este pedido es un regalo
           </label>
         </form>
-        <button className="goToCheckout" onClick={handleCheckout}>Proceder al pago</button>
+        <Link to={`/checkout`}><button className="goToCheckout">Proceder al pago</button></Link>
       </div>
     </>
   );

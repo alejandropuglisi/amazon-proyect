@@ -7,7 +7,6 @@ import './Navbar.css';
 const NavbarComponent = () => {
 
     const [dropdownOpen, setDropdownOpen] = useState (false);
-
     const toggle = () => setDropdownOpen (prevState => !prevState);
 
     return (
@@ -26,11 +25,11 @@ const NavbarComponent = () => {
                     </Dropdown>
                 </div>
                 <div className="navbar__all__options">
-                    <a className="navbar__options" href="#">Ofertas del Día</a>
-                    <a className="navbar__options" href="#">Servicio al Cliente</a>
-                    <a className="navbar__options" href="#">Tarjetas de Regalo</a>
-                    <a className="navbar__options" href="#">Vender</a>
-                    <a className="navbar__options" href="#">Listas</a>
+                    <Link to={`/`} className="navbar__options">Ofertas del Día</Link>
+                    <Link to={`/`} className="navbar__options">Servicio al Cliente</Link>
+                    <Link to={`/`} className="navbar__options">Tarjetas de Regalo</Link>
+                    <Link to={`/`} className="navbar__options">Vender</Link>
+                    <Link to={`/`} className="navbar__options">Listas</Link>
                 </div>
             </div>
         </>

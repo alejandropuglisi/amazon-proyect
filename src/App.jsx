@@ -1,8 +1,8 @@
 import './App.css';
 import  { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HeaderComponent from './components/Header/Header';
-import ItemListContainerComponent from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainerComponent from './components/ItemDetailContainer/ItemDetailContainer';
+import ItemListContainerComponent from './containers/ItemListContainer/ItemListContainer';
+import ItemDetailContainerComponent from './containers/ItemDetailContainer/ItemDetailContainer';
 import FooterComponent from './components/Footer/Footer';
 import NavbarComponent from './components/Navbar/Navbar';
 import LoginComponent from './components/Login/Login';
@@ -11,6 +11,7 @@ import SearchComponent from './components/Search/Search';
 import CarouselPage from './components/Carousel/Carousel';
 import { CartProvider } from './context/CartContext';
 import FirebaseProvider from './context/FirebaseContext';
+import CheckoutComponent from './components/Checkout/Checkout';
 
 const App = () => {
 
@@ -42,6 +43,9 @@ const App = () => {
               </Route>
               <Route path="/search/:keyword">                
                 <SearchComponent />              
+              </Route>
+              <Route path="/checkout">          
+                <CheckoutComponent />
               </Route>
             </Switch>
             <FooterComponent />

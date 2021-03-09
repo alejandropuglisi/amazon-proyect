@@ -13,7 +13,6 @@ const SearchComponent = () => {
     useEffect(() => {
         getAllItems().then((products) => {
             if (products.length > 0) {
-                console.log(products);
                 setProducts(products.filter((product) =>
                     product.title.toLowerCase().indexOf(keyword.toLowerCase())>=0 || 
                     product.description.toLowerCase().indexOf(keyword.toLowerCase())>=0 ||

@@ -1,16 +1,16 @@
 import { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext();
-
-export const CartProvider = ({children}) => {
+export const CartProvider = ({ defaultValue = [], children }) => {
 
     const cartLocalStorage = JSON.parse(localStorage.getItem('cart'));
-
-    const [cart, setCart] = useState(cartLocalStorage && cartLocalStorage.length > 0 ? cartLocalStorage : []);
+    const [cart, setCart] = useState(cartLocalStorage && cartLocalStorage.length > 0 ? cartLocalStorage : defaultValue);
 
     cart.totalPrice = cart.length > 0 ? cart.reduce((total, cartItem) => total + (cartItem.quantity * cartItem.item.price), 0) : '';
-
     cart.totalItems = cart.length > 0 ? cart.reduce((totalItemsCart, cartItem) => totalItemsCart + cartItem.quantity, 0) : '';
+
+    const userLocalStorage = JSON.parse(localStorage.getItem('user'));
+    const [loggedUser, setLoggedUser] = useState(userLocalStorage? userLocalStorage : defaultValue);
 
     const addItem = (item, quantity) => {
         if (!isInCart (item.id)) {
@@ -40,11 +40,16 @@ export const CartProvider = ({children}) => {
         localStorage.setItem('cart', JSON.stringify([]));
     };
 
+    const setUser = (user) => {
+        setLoggedUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
+    }
+
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
-    }, [cart]);
+    }, [cart, loggedUser]);
 
-    return <CartContext.Provider value={{cart, addItem, clearCart, removeItem}}>
+    return <CartContext.Provider value={{cart, loggedUser, addItem, clearCart, removeItem, setUser}}>
         {children}
     </CartContext.Provider>
 };
