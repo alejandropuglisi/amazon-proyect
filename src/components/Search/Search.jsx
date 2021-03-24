@@ -6,8 +6,8 @@ import { useFirebaseContext } from '../../context/FirebaseContext';
 
 const SearchComponent = () => {
 
-    const {keyword} = useParams();
-    const [products, setProducts] = useState([]);
+    const { keyword } = useParams();
+    const [ products, setProducts ] = useState([]);
     const { getAllItems } = useFirebaseContext();
 
     useEffect(() => {

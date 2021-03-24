@@ -1,0 +1,13 @@
+.order__container {
+    padding: 20px;
+    background-color: rgb(240, 230, 230);
+    min-height: fit-content;
+    display: flex;
+    padding-bottom: 0;
+}
+
+.order__subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 20px;
+}

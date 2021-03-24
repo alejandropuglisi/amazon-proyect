@@ -12,6 +12,7 @@ import CarouselPage from './components/Carousel/Carousel';
 import { CartProvider } from './context/CartContext';
 import FirebaseProvider from './context/FirebaseContext';
 import CheckoutComponent from './components/Checkout/Checkout';
+import OrderComponent from './components/Order/Order';
 
 const App = () => {
 
@@ -46,6 +47,9 @@ const App = () => {
               </Route>
               <Route path="/checkout">          
                 <CheckoutComponent />
+              </Route>
+              <Route path="/order/:orderId">          
+                <OrderComponent />
               </Route>
             </Switch>
             <FooterComponent />

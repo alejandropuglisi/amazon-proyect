@@ -6,10 +6,10 @@ import LoadingComponent from '../../components/Loading/Loading';
 
 const ItemDetailContainerComponent = () => {
 
-    const [item, setItem] = useState([])
-    const {id} = useParams();
+    const [ item, setItem ] = useState([])
+    const { id } = useParams();
     const { getItemByID } = useFirebaseContext();
-    const [loading, setLoading] = useState(true);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
         setLoading(true);

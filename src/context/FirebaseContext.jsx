@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { getFirestore } from '../firebase/firebase';
 import firebase from 'firebase/app';
-import sha1 from 'sha1';
 
 export const FirebaseContext = React.createContext(false);
 export const useFirebaseContext = () => useContext(FirebaseContext);
@@ -88,39 +87,9 @@ const FirebaseProvider = ({ children }) => {
         });
     }
 
-    /*Users*/
-    const registerUser = (data) => {
-        return new Promise(async(resolve, reject) => {
-            const res = await db.collection('USERS').add(data);
-            data.password = sha1(data.password);
-            if (res.id) {
-                localStorage.setItem('user', JSON.stringify({ id: res.id, nombre: data.nombre, phone: data.phone, email: data.email }));
-                resolve({ id: res.id, nombre: data.nombre, phone: data.phone, email: data.email });
-            } else {
-                reject('Error al almacenar en Firebase');
-            }
-        });
+    const getOrderByID = (orderId) => {
+        return db.collection('ORDERS').doc(orderId).get();
     }
-
-    const loginUser = (data) => {
-        return new Promise(async(resolve, reject) => {
-            data.password = sha1(data.password);
-            const query =  await db.collection('USERS').where('email', '==', data.email).get();
-            if (!query.empty) {
-                const snapshot = query.docs[0];
-                const userData = snapshot.data();
-                if (data.password == userData.password) {
-                    localStorage.setItem('user', JSON.stringify({ id: snapshot.id, nombre: userData.nombre, phone: userData.phone, email: userData.email }));
-                    resolve({ id: snapshot.id, nombre: userData.nombre, phone: userData.phone, email: userData.email });
-                } else {
-                    reject('Usuario/Contraseña no válidos');
-                }
-            } else {
-                reject('Usuario/Contraseña no válidos');
-            }
-        });
-    }
-
 
     /* Categories */
     const getAllCategories = () => {
@@ -137,7 +106,7 @@ const FirebaseProvider = ({ children }) => {
     }
 
     return (
-        <FirebaseContext.Provider value={{ getAllItems, getItemByID, getItemsByCategory, updateStock, createOrder, registerUser, loginUser}}>
+        <FirebaseContext.Provider value={{ getAllItems, getItemByID, getItemsByCategory, updateStock, createOrder, getOrderByID }}>
             {children}
         </FirebaseContext.Provider>
     )
